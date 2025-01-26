@@ -81,7 +81,7 @@ def reset_session():
 
 # Streamlitアプリケーション
 def main():
-    st.title('クイズアプリ')
+    st.title('Google Cloud Professional Data Engineer 問題集')
 
     # データベース初期化
     initialize_database()
