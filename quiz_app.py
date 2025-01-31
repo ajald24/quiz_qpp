@@ -43,7 +43,7 @@ def export_questions_to_csv():
     query = 'SELECT * FROM  questions'
     df = pd.read_sql_query(query, conn)
     # データをCSVファイルにエクスポート
-    csv = df.to_csv(index=False)
+    csv = df.to_csv(index=False,encoding='cp932')
     # CSVファイルをダウンロード可能にする
     st.download_button(
         label="CSVでダウンロード",
@@ -207,7 +207,7 @@ def main():
 
     elif menu == '問題集を出力':
         export_questions_to_csv()
-        st.success('csvファイルがダウンロードされました。')
+        # st.success('csvファイルがダウンロードされました。')
 
 if __name__ == '__main__':
     main()
