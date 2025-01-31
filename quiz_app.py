@@ -43,7 +43,7 @@ def export_questions_to_csv():
     query = 'SELECT * FROM  questions'
     df = pd.read_sql_query(query, conn)
     # データをCSVファイルにエクスポート
-    csv = df.to_csv(index=False,encoding='utf-8-sig')
+    csv = df.to_csv(index=False,encoding='cp932')
     # CSVファイルをダウンロード可能にする
     st.download_button(
         label="CSVでダウンロード",
