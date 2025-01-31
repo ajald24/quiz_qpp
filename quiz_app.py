@@ -153,7 +153,7 @@ def main():
                 if st.session_state['is_correct']:
                     st.success('正解です！')
                 else:
-                    st.error('不正解です')
+                    st.error(f'不正解です。正解は{correct_answers}です。')
                 st.info(f"解説: {question_data['explanation']}")
                 if question_data['note']:
                     st.warning(f"備考: {question_data['note']}")
@@ -196,7 +196,7 @@ def main():
                 if st.session_state['is_correct']:
                     st.success('正解です！')
                 else:
-                    st.error(f'不正解です、正解は{correct_answers}')
+                    st.error(f'不正解です、正解は{correct_answers}です。')
                 st.info(f"解説: {question_data['explanation']}")
                 if question_data['note']:
                     st.warning(f"備考: {question_data['note']}")
