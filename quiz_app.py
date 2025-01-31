@@ -36,6 +36,24 @@ def import_questions_from_csv(file):
     df.to_sql('questions', conn, if_exists='append', index=False)
     conn.close()
 
+# 問題をデータベースからエクスポート
+def export_questions_to_csv():
+    conn = sqlite3.connect('quiz_app.db')
+    # SQLクエリを使用してデータを読み込む
+    query = 'SELECT * FROM  questions'
+    df = pd.read_sql_query(query, conn)
+    # データをCSVファイルにエクスポート
+    csv = df.to_csv(index=False)
+    # CSVファイルをダウンロード可能にする
+    st.download_button(
+        label="CSVでダウンロード",
+        data=csv,
+        file_name='output.csv',
+        mime='text/csv',
+    )
+    # 接続を閉じる
+    conn.close()
+
 # 条件に応じた問題を取得（ランダム一問）
 def fetch_random_question(flagged_only=False, incorrect_only=False):
     conn = sqlite3.connect('quiz_app.db')
@@ -186,6 +204,10 @@ def main():
                     update_flag(question_data['id'], 1)
         else:
             st.info('条件に一致する問題がありません。')
+
+    elif menu == '問題集を出力':
+        export_questions_to_csv()
+        st.success('csvファイルがダウンロードされました。')
 
 if __name__ == '__main__':
     main()
