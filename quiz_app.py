@@ -110,7 +110,7 @@ def main():
 
     # サイドバー
     st.sidebar.header('メニュー')
-    menu = st.sidebar.selectbox('選択してください', ['問題を解く', '間違えた/フラグ付き問題に挑戦', 'CSVから問題をインポート'])
+    menu = st.sidebar.selectbox('選択してください', ['問題を解く', '間違えた/フラグ付き問題に挑戦', 'CSVから問題をインポート','問題集を出力'])
 
     if menu == 'CSVから問題をインポート':
         st.header('CSVから問題をインポート')
